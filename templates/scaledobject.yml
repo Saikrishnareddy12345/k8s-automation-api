@@ -1,0 +1,13 @@
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: {name}-scaledobject
+  namespace: {namespace}
+spec:
+  scaleTargetRef:
+    name: {name}
+  minReplicaCount: {min_replicas}
+  maxReplicaCount: {max_replicas}
+  triggers:
+    - type: {event_source_type}
+      metadata: {event_source_metadata}
