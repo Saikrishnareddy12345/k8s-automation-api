@@ -215,7 +215,7 @@ Refer to the code section for details.
 
 ## **Project Structure**
 ```
-kubernetes-automation-api/
+k8s-automation-api/
 ├── api.py                 # Main application logic
 ├── requirements.txt        # Python dependencies
 ├── templates/              # YAML templates for Kubernetes resources
@@ -229,9 +229,11 @@ kubernetes-automation-api/
 **1. Cluster Connection:**
 
 - Returns error codes 500 or 404 if the cluster connection fails.
+
 **2. Resource Creation:**
 
 - Returns detailed error messages for any failed Kubernetes API operations.
+
 **3. Validation:**
 
 Uses Pydantic models to validate API inputs.
