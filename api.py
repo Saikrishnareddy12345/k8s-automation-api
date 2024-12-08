@@ -121,7 +121,7 @@ app.lifespan = lifespan
 def check_cluster():
     """Endpoint to verify Kubernetes cluster connection."""
     try:
-        message = connect_to_k8s_cluster(kubeconfig_path="~/.kube/config")
+        message = connect_to_k8s_cluster(kubeconfig_path="~/.minikube/config")
         return {"message": message}
     except HTTPException as e:
         return {"error": e.detail}
@@ -154,13 +154,16 @@ def load_yaml_template(file_path: str, replacements: dict):
         dict: YAML content with placeholders replaced.
     """
     with open(file_path, "r") as file:
-        content = yaml.safe_load(file)
+        content = file.read()
 
     # Replace placeholders
-    content_str = json.dumps(content)
     for placeholder, value in replacements.items():
-        content_str = content_str.replace(f"{{{placeholder}}}", str(value))
-    return json.loads(content_str)
+        # Convert non-string values to string for replacement
+        value_str = json.dumps(value) if isinstance(value, (dict, list)) else str(value)
+        content = content.replace(f"{{{placeholder}}}", value_str)
+
+    # Parse the replaced content back to YAML
+    return yaml.safe_load(content)
 
 @app.post("/deploy", status_code=201)
 def deploy_application(deployment_request: DeploymentRequest):

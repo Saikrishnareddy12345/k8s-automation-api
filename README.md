@@ -194,7 +194,7 @@ kubectl get pods -n keda
 1. Start the FastAPI server:
 
 ```
-python -m uvicorn main:app --reload --port 8000 --server 0.0.0.0
+python -m uvicorn api:app --reload --port 8000 --server 0.0.0.0
 ```
 2. Access the API docs at: http://127.0.0.1:8000/docs
 
