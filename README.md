@@ -265,15 +265,15 @@ After Running the Fast Api check the below Images how to test or create the depl
 
 **1.** the home page of the FastApi
 
-![Screenshot](templates/image1.png)
+![Screenshot](images/image1.png)
 
 **2.**/deploy url is to deploy the deployment,
 already the path of the k8s templates defined in the code. the input is should be the json format.
 
-![Screenshot](templates/image2.png)
+![Screenshot](images/image2.png)
 
 **3**/update-keta url is to update the existing the keda 
 
-![Screenshot](templates/image3.png)
+![Screenshot](images/image3.png)
 
 # Thank You!
